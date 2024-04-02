@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+      </CookieManager>
+      <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">true</boolProp>
+        <boolProp name="CacheManager.controlledByThread">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="false">
+        <stringProp name="delimiter">,</stringProp>
+        <stringProp name="fileEncoding"></stringProp>
+        <stringProp name="filename">C:/Users/hp/Downloads/PetData.csv</stringProp>
+        <boolProp name="ignoreFirstLine">false</boolProp>
+        <boolProp name="quotedData">false</boolProp>
+        <boolProp name="recycle">true</boolProp>
+        <stringProp name="shareMode">shareMode.all</stringProp>
+        <boolProp name="stopThread">false</boolProp>
+        <stringProp name="variableNames">category</stringProp>
+      </CSVDataSet>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="jp@gc - Chrome Driver Config">
+          <boolProp name="WebDriverConfig.acceptinsecurecerts">false</boolProp>
+          <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
+          <stringProp name="WebDriverConfig.driver_path">F:\D\apache-jmeter-5.6.3\licenses\chromedriver-win64\chromedriver.exe</stringProp>
+          <boolProp name="WebDriverConfig.dev_mode">true</boolProp>
+          <boolProp name="WebDriverConfig.headless">false</boolProp>
+          <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
+          <stringProp name="ChromeDriverConfig.additional_args"></stringProp>
+          <stringProp name="ChromeDriverConfig.binary_path"></stringProp>
+          <stringProp name="WebDriverConfig.proxy_type">DIRECT</stringProp>
+          <stringProp name="WebDriverConfig.proxy_pac_url"></stringProp>
+          <stringProp name="WebDriverConfig.http_host"></stringProp>
+          <intProp name="WebDriverConfig.http_port">8080</intProp>
+          <boolProp name="WebDriverConfig.use_http_for_all_protocols">true</boolProp>
+          <stringProp name="WebDriverConfig.https_host"></stringProp>
+          <intProp name="WebDriverConfig.https_port">8080</intProp>
+          <stringProp name="WebDriverConfig.ftp_host"></stringProp>
+          <intProp name="WebDriverConfig.ftp_port">8080</intProp>
+          <stringProp name="WebDriverConfig.socks_host"></stringProp>
+          <intProp name="WebDriverConfig.socks_port">8080</intProp>
+          <stringProp name="WebDriverConfig.no_proxy">localhost</stringProp>
+          <stringProp name="WebDriverConfig.custom_capabilites"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler ---------Archive" enabled="false">
+          <stringProp name="WebDriverSampler.script">WDS.sampleResult.sampleStart()    
+WDS.browser.get(&apos;https://google.com&apos;)    
+WDS.sampleResult.sampleEnd()    
+WDS.sampleResult.sampleStart()    
+WDS.browser.get(&quot;https://www.google.com/&quot;);    
+var searchBox =   WDS.browser.findElement(org.openqa.selenium.By.name(&quot;q&quot;));      
+searchBox.click();    
+searchBox.sendKeys(&apos;Test&apos;);    
+searchBox.sendKeys(org.openqa.selenium.Keys.ENTER);   
+WDS.sampleResult.sampleEnd()   
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Launch" enabled="true">
+          <stringProp name="WebDriverSampler.script">// Open the first page
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+
+// Wait for page to load (adjust wait time as needed)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Accept All Cookies" enabled="true">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">// Open the first page
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+
+// Wait for page to load (adjust wait time as needed)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+// For Accept all cookies
+//WDS.browser.findElement(org.openqa.selenium.By.xath(&quot;//button[text()=&apos;Accept All &apos;]&quot;)).click()
+WDS.browser.manage().deleteAllCookies();
+
+//WDS.sampleResult.sampleStart()
+//java.lang.Thread.sleep(5000)
+//WDS.sampleResult.sampleEnd()
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.WebElement
+
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+WDS.browser.manage().deleteAllCookies();
+
+var buttonElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+
+// Cast WebDriver to JavascriptExecutor
+JavascriptExecutor jsExecutor = (JavascriptExecutor) WDS.browser
+
+// Execute JavaScript code to click the button
+jsExecutor.executeScript(&quot;arguments[0].click();&quot;, buttonElement)
+
+
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop --------ok" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.interactions.Actions
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+WDS.browser.manage().deleteAllCookies();
+
+// Click on &quot;Shop&quot; (assuming it&apos;s a button with ID &quot;shop_button&quot;)
+//var buttonElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+// Cast WebDriver to JavascriptExecutor
+//JavascriptExecutor jsExecutor = (JavascriptExecutor) WDS.browser
+// Execute JavaScript code to click the button
+//jsExecutor.executeScript(&quot;arguments[0].click();&quot;, buttonElement)
+// Click on &quot;Laptop&quot; (assuming it&apos;s a link with text &quot;Laptop&quot;)
+//var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+//laptopLink.click();
+// Find the element you want to wait for (e.g., by ID, XPath, etc.)
+//var element = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[text()=&apos;Shop&apos;]&quot;))
+// Create a WebDriverWait instance with a timeout of 10 seconds
+//WDS.browser.getDriver() wait = new WDS.browser.getDriver()(WDS.browser, 10)
+//var wait = new WebDriverWait(WDS.browser.getDriver(), 30)
+// Use the WebDriverWait instance to wait for the element to be clickable
+// Change the ExpectedConditions as per your requirement (e.g., presenceOfElementLocated, visibilityOfElementLocated, etc.)
+//wait.until(visibilityOfElementLocated.elementToBeClickable(element))
+//wait.until(ExpectedConditions.presenceOfElementLocated(element))
+// Perform actions on the element after it becomes clickable
+//element.click()
+
+var shopElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//a[text()=&apos;Shop&apos;]&quot;)
+Actions actions = new Actions(WDS.browser)
+actions.moveToElement(shopElement).perform()
+Thread.sleep(2000) // Adjust the sleep duration as necessary
+// Click on the &quot;Shop&quot; element
+shopElement.click()
+Thread.sleep(2000) // Adjust the sleep duration as necessary
+log.info(&quot;First Sucesssfull Messsage &quot;)
+
+//var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+//JavascriptExecutor jsExecutor11 = (JavascriptExecutor) WDS.browser
+//jsExecutor11.executeScript(&quot;arguments[0].click();&quot;, laptopLink)
+
+
+//var shopElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//a[text()=&apos;Shop&apos;]&quot;)
+//Actions actions1 = new Actions(WDS.browser)
+//actions1.moveToElement(shopElement).build().perform()
+//Thread.sleep(2000) // Adjust the sleep duration as necessary
+// Find the element corresponding to &quot;Laptops&quot; in the submenu and click it
+var laptopsElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+
+Actions actions1 = new Actions(WDS.browser)
+actions.moveToElement(laptopsElement).perform()
+
+laptopsElement.click()
+// Wait for the page to load
+Thread.sleep(2000) // Adjust the sleep duration as necessary
+log.info(&quot;seconds Sucesssfull Messsage &quot;)
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop --------ok">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">WDS.sampleResult.sampleStart()
+
+// Set the path to chromedriver executable
+//System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;F:\D\apache-jmeter-5.6.3\licenses\chromedriver-win64\chromedriver.exe&quot;)
+
+// Initialize ChromeDriver
+//ChromeOptions options = new ChromeOptions()
+//options.addArguments(&quot;--headless&quot;) // Run Chrome in headless mode (without opening GUI)
+//WebDriver driver = new ChromeDriver(options)
+
+try {
+    // Navigate to the URL
+    driver.get(&quot;https://www.hp.com/us-en/shop&quot;)
+
+    // Find the element corresponding to &quot;Shop&quot; button and click it
+    WebElement shopButton = driver.findElement(By.xpath(&quot;//a[text()=&apos;Shop&apos;]&quot;))
+    shopButton.click()
+
+    // Wait for the page to load
+    Thread.sleep(2000)
+
+    // Find the element corresponding to &quot;Laptops&quot; button in the submenu and click it
+    WebElement laptopsButton = driver.findElement(By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+    laptopsButton.click()
+
+    // Wait for the page to load
+    Thread.sleep(2000)
+
+    // Find the element corresponding to &quot;View All Laptops&quot; button and click it
+    WebElement viewAllLaptopsButton = driver.findElement(By.xpath(&quot;//a[text()=&apos;View All Laptops&apos;]&quot;))
+    viewAllLaptopsButton.click()
+
+    // Wait for the page to load
+    Thread.sleep(2000)
+
+    WDS.sampleResult.sampleEnd()
+} catch (Exception ex) {
+    WDS.sampleResult.sampleEnd()
+    throw ex
+} finally {
+    // Close the browser
+    driver.quit()
+}
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop --------ok" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.support.ui.ExpectedConditions
+import org.openqa.selenium.support.ui.WebDriverWait
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+WDS.browser.manage().deleteAllCookies();
+
+// Click on &quot;Shop&quot; (assuming it&apos;s a button with ID &quot;shop_button&quot;)
+var buttonElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+// Cast WebDriver to JavascriptExecutor
+JavascriptExecutor jsExecutor = (JavascriptExecutor) WDS.browser
+// Execute JavaScript code to click the button
+jsExecutor.executeScript(&quot;arguments[0].click();&quot;, buttonElement)
+// Click on &quot;Laptop&quot; (assuming it&apos;s a link with text &quot;Laptop&quot;)
+//var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+//laptopLink.click();
+// Find the element you want to wait for (e.g., by ID, XPath, etc.)
+var element = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[text()=&apos;Shop&apos;]&quot;))
+// Create a WebDriverWait instance with a timeout of 10 seconds
+//WDS.browser.getDriver() wait = new WDS.browser.getDriver()(WDS.browser, 10)
+var wait = new WebDriverWait(WDS.browser.getDriver(), 30)
+// Use the WebDriverWait instance to wait for the element to be clickable
+// Change the ExpectedConditions as per your requirement (e.g., presenceOfElementLocated, visibilityOfElementLocated, etc.)
+//wait.until(visibilityOfElementLocated.elementToBeClickable(element))
+wait.until(ExpectedConditions.presenceOfElementLocated(element))
+// Perform actions on the element after it becomes clickable
+element.click()
+
+var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+JavascriptExecutor jsExecutor11 = (JavascriptExecutor) WDS.browser
+jsExecutor11.executeScript(&quot;arguments[0].click();&quot;, laptopLink)
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop --------ok" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.JavascriptExecutor
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+WDS.browser.manage().deleteAllCookies();
+
+// Click on &quot;Shop&quot; (assuming it&apos;s a button with ID &quot;shop_button&quot;)
+var buttonElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+// Cast WebDriver to JavascriptExecutor
+JavascriptExecutor jsExecutor = (JavascriptExecutor) WDS.browser
+// Execute JavaScript code to click the button
+jsExecutor.executeScript(&quot;arguments[0].click();&quot;, buttonElement)
+// Click on &quot;Laptop&quot; (assuming it&apos;s a link with text &quot;Laptop&quot;)
+//var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+//laptopLink.click();
+
+var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+JavascriptExecutor jsExecutor11 = (JavascriptExecutor) WDS.browser
+jsExecutor11.executeScript(&quot;arguments[0].click();&quot;, laptopLink)
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop ---------Again mouse hover" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
+
+// Find the Shop button element
+var shopButton = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;));
+// Create Actions object
+Actions actions = new Actions(WDS.browser)
+// Perform mouse hover operation
+actions.moveToElement(shopButton).perform();
+// Wait for 10 seconds (10000 milliseconds)
+Thread.sleep(10000);
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+WDS.browser.manage().deleteAllCookies();
+
+// Wait for the page to load (optional)
+//WDS.sampleResult.sampleStart()
+//WDS.sampleResult.sampleEnd()
+
+//WDS.browser.manage().deleteAllCookies();
+//thread.sleep(5000);
+// Click on &quot;Shop&quot; (assuming it&apos;s a button with ID &quot;shop_button&quot;)
+//var shopButton = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;));
+//shopButton.click();
+
+//var buttonElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+
+// Cast WebDriver to JavascriptExecutor
+//JavascriptExecutor jsExecutor = (JavascriptExecutor) WDS.browser
+
+// Execute JavaScript code to click the button
+//jsExecutor.executeScript(&quot;arguments[0].click();&quot;, buttonElement)
+
+
+var element = WDS.browser.findElement(By.(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;)
+
+// Create Actions object
+Actions actions = new Actions(WDS.browser)
+
+// Perform mouse hover operation
+actions.moveToElement(element).perform()
+
+//thread.sleep(5000)
+
+
+
+// Wait for the page to load (optional)
+//WDS.sampleResult.sampleStart()
+//WDS.sampleResult.sampleEnd()
+
+// Click on &quot;Laptop&quot; (assuming it&apos;s a link with text &quot;Laptop&quot;)
+//var laptopLink = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+//JavascriptExecutor jsExecutor1 = (JavascriptExecutor) WDS.browser
+
+//jsExecutor1.executeScript(&quot;arguments[0].click();&quot;, laptopLink)
+
+
+
+
+
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop and Laptop ---------Again" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+
+// Launch the URL
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+WDS.browser.manage().deleteAllCookies()
+// Wait for the page to load (optional)
+//WDS.sampleResult.sampleStart()
+//WDS.sampleResult.sampleEnd()
+
+// Click on the &quot;Shop&quot; tab (assuming it&apos;s a link with text &quot;Shop&quot;)
+var shopTab = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;))
+shopTab.click()
+
+// Wait for the page to load (optional)
+//WDS.sampleResult.sampleStart()
+//WDS.sampleResult.sampleEnd()
+WDS.browser.manage().deleteAllCookies()
+// Click on the &quot;Laptop&quot; element (assuming it&apos;s a link with text &quot;Laptop&quot;)
+var laptopElement = WDS.browser.findElement(org.openqa.selenium.By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;))
+laptopElement.click()
+
+Thread.sleep(10000)
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop Including Accept All Cookies" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
+// Open the first page
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+
+// Wait for page to load (adjust wait time as needed)
+//WDS.sampleResult.sampleStart()
+//WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+//WDS.sampleResult.sampleEnd()
+
+// Delete all cookies
+//WDS.browser.manage().deleteAllCookies();
+
+//WDS.sampleResult.sampleStart()
+//java.lang.Thread.sleep(5000)
+//WDS.sampleResult.sampleEnd()
+
+// Create Actions object
+Actions actions = new Actions(WDS.browser);
+
+// Find the element to hover over (e.g., product image)
+//WebElement element = WDS.browser.findElement(By.xpath(&quot;//li[text()=&apos;Shop&apos;]&quot;));
+WebElement element = WDS.browser.findElement(By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;));
+// Perform hover action
+actions.moveToElement(element).click();
+
+// Now you can proceed with your test steps after the hover action
+// For example, click on a button that appears after hovering
+WDS.sampleResult.sampleStart()
+java.lang.Thread.sleep(5000);
+WDS.sampleResult.sampleEnd()
+//WDS.browser.manage().deleteAllCookies();
+
+WebElement element1 = WDS.browser.findElement(By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;));
+actions.moveToElement(element1).click();
+
+WDS.sampleResult.sampleStart()
+java.lang.Thread.sleep(5000);
+WDS.sampleResult.sampleEnd()
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop Including Accept All Cookies" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.interactions.Actions
+// Open the first page
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+
+// Wait for page to load (adjust wait time as needed)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+// Delete all cookies
+WDS.browser.manage().deleteAllCookies();
+
+//WDS.sampleResult.sampleStart()
+//java.lang.Thread.sleep(5000)
+//WDS.sampleResult.sampleEnd()
+
+// Create Actions object
+Actions actions = new Actions(WDS.browser);
+
+// Find the element to hover over (e.g., product image)
+//WebElement element = WDS.browser.findElement(By.xpath(&quot;//li[text()=&apos;Shop&apos;]&quot;));
+WebElement element = WDS.browser.findElement(By.xpath(&quot;//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]&quot;));
+// Perform hover action
+actions.moveToElement(element).perform();
+
+// Now you can proceed with your test steps after the hover action
+// For example, click on a button that appears after hovering
+WDS.browser.findElement(By.xpath(&quot;//li[@role=&apos;menuitem&apos;]//a[text()=&apos;Laptops&apos;]&quot;)).click();
+
+WDS.sampleResult.sampleStart()
+java.lang.Thread.sleep(5000);
+WDS.sampleResult.sampleEnd()
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler - Shop Including Accept All Cookies" enabled="false">
+          <stringProp name="TestPlan.comments">//li[text()=&apos;Shop&apos;]
+//div[@class=&apos;menu-desktop&apos;]//li[text()=&apos;Shop&apos;]</stringProp>
+          <stringProp name="WebDriverSampler.script">// Open the first page
+WDS.browser.get(&apos;https://www.hp.com/us-en/shop&apos;)
+
+// Wait for page to load (adjust wait time as needed)
+WDS.sampleResult.sampleStart()
+WDS.browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+WDS.sampleResult.sampleEnd()
+
+// For Accept all cookies
+//WDS.browser.findElement(org.openqa.selenium.By.xath(&quot;//button[text()=&apos;Accept All &apos;]&quot;)).click()
+WDS.browser.manage().deleteAllCookies();
+
+// Open the second page -Shop
+// WDS.browser.findElement(org.openqa.selenium.By.cssSelector(&quot;a[href*=\&quot;categoryId=${category}\&quot;]&quot;)).click()
+
+//WDS.browser.findElement(org.openqa.selenium.By.xath(&quot;//li[text()=&apos;Shop&apos;]&quot;)).click()
+
+// Wait for page to load (adjust wait time as needed)
+//WDS.sampleResult.sampleStart()
+//browser.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS)
+//WDS.sampleResult.sampleEnd()
+
+// Add 5 seconds of think time
+//WDS.sampleResult.sampleStart()
+//java.lang.Thread.sleep(5000)
+//WDS.sampleResult.sampleEnd()
+
+
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">groovy</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
