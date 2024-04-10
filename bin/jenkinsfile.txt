@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'ENVIRONMENT', defaultValue: 'production', description: 'Environment to test')
+        choice(name: 'THREADS', choices: ['2', '5', '10'], description: 'Number of threads')
+        string(name: 'RAMP_UP', defaultValue: '10', description: 'Ramp-up period')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Ashwani144/JMeter_Setup_Jenkins.git'
+            }
+        }
+        stage('Run JMeter Tests') {
+            steps {
+                script {
+                    def jmeterHome = tool 'JMeter'
+                    sh "${jmeterHome}/bin/jmeter -n -t JMeter_Jenkins.jmx -l results.jtl -Jenvironment=${ENVIRONMENT} -Jthreads=${THREADS} -Jrampup=${RAMP_UP}"
+                }
+            }
+        }
+        stage('Publish Results') {
+            steps {
+                performanceTestReport parsers: [[$class: 'JMeterParser', glob: 'results.jtl']]
+            }
+        }
+    }
+}
